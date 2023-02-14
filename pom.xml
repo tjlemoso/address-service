@@ -5,7 +5,7 @@
   <groupId>org.acme</groupId>
   <artifactId>address-service</artifactId>
   <version>1.0.0-SNAPSHOT</version>
-  <properties>
+    <properties>
     <compiler-plugin.version>3.10.1</compiler-plugin.version>
     <maven.compiler.release>11</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -46,6 +46,39 @@
       <artifactId>rest-assured</artifactId>
       <scope>test</scope>
     </dependency>
+    <!-- Hibernate ORM specific dependencies -->
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-hibernate-orm-panache</artifactId>
+    </dependency>
+    <!-- JDBC driver dependencies -->
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-jdbc-mysql</artifactId>
+    </dependency>    
+    <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.26</version>
+        <scope>provided</scope>
+    </dependency>
+    <dependency>
+        <groupId>io.quarkus</groupId>
+        <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
+    </dependency>     
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-orm</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-narayana-jta</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.modelmapper</groupId>
+      <artifactId>modelmapper</artifactId>
+      <version>3.0.0</version>
+    </dependency>          
   </dependencies>
   <build>
     <plugins>
@@ -103,6 +136,21 @@
         </executions>
       </plugin>
     </plugins>
+ <finalName>${project.parent.artifactId}</finalName>
+ <resources>
+  <resource>
+    <directory>../additional_stuff</directory>
+    <includes>
+      <include>**/*.*</include>
+    </includes>
+  </resource>
+  <resource>
+    <directory>src/main/resources</directory>
+    <includes>
+      <include>**/*.*</include>
+    </includes>
+  </resource>
+</resources>
   </build>
   <profiles>
     <profile>
